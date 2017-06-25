@@ -23,10 +23,10 @@ function OlsDiagnosticsFn(y,x,u,m=1)
 #  Paul.Soderlind@unisg.ch
 #------------------------------------------------------------------------------
 
-  ux = excise([y u x])
-  y  = ux[:,1]
-  u  = ux[:,2]
-  x  = ux[:,3:end]
+  #ux = excise([y u x])
+  #y  = ux[:,1]
+  #u  = ux[:,2]
+  #x  = ux[:,3:end]
 
   T = size(x,1)
   k = size(x,2)

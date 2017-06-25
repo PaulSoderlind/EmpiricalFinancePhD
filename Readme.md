@@ -2,7 +2,7 @@
 
 Julia code for a Empirical Finance course at UNISG. 
 
-The currebnt version is tested on Julia 0.5.1 and and 0.6-pre.alpha.
+The current version is tested on Julia 0.6.0.
 
 The .ipynb files are Julia notebooks. They use data in the Data folder and Julia functions in the jlFiles folder. The notebooks are meant to be used together with my lecture notes (the pdf file).
 
