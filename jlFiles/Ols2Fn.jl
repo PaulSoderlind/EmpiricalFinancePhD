@@ -1,28 +1,33 @@
-function Ols2Fn(y,x,m=0)
-#Ols2Fn    LS of y on x for one dependent variable or SURE with same regressors,
-#          gives a NW covariance matrix
-#
-#
-#
-#  Usage:    (b,u,yhat,CovbLS,R2a,T,CovbNW) = Ols2Fn(y,x,m)
-#
-#  Input:    y            Tx1 or Txn matrix of the dependent variables
-#            x            Txk matrix of regressors (including deterministic ones)
-#            m            scalar, bandwidth in the Newey-West covariance matrix.
-#                         Use m = 0 to get White's covariance matrix.
-#
-#  Output:   b            kxn matrix, regression coefficients
-#            u            Tx1 or Txn matrix, residuals y - yhat
-#            yhat         Tx1 or Txn matrix, fitted values x*b
-#            CovbLS       matrix, covariance matrix of vec(b) =[beq1beq2...]
-#            R2a          1xn vector, R2 values
-#            T            scalar, number of obs
-#            CovbNW       matrix, Newey-West covariance matrix. Use m=0 for White's.
-#
-#
-#
-#  Paul.Soderlind@unisg.ch
+#------------------------------------------------------------------------------
+"""
+Ols2Fn(y,x,m=0)
+
+LS of y on x for one dependent variable or SURE with same regressors, gives a NW
+covariance matrix.
+
+ # Input
+- `y::Array`:  Tx1 or Txn matrix of the dependent variables
+- `x::Array`:  Txk matrix of regressors (including deterministic ones)
+- `m::Int`:    scalar, bandwidth in the Newey-West covariance matrix
+               Use m = 0 to get White's covariance matrix
+
+ # Output
+- `b::Array`:       kxn matrix, regression coefficients
+- `u::Array`:       Tx1 or Txn matrix, residuals y - yhat
+- `yhat::Array`:    Tx1 or Txn matrix, fitted values x*b
+- `CovbLS::Array`:  matrix, covariance matrix of vec(b) = [beq1;beq2...]
+- `R2a::Array`:     1xn vector, R2 values
+- `T::Int`:         scalar, number of obs
+- `CovbNW::Array`:  matrix, Newey-West covariance matrix. Use m=0 for White's
+
+# Requires
+- HDirProdFn
+- NWFn
+
+"""
 #----------------------------------------------------------------------------
+
+function Ols2Fn(y,x,m=0)
 
   T = size(y,1)
   n = size(y,2)

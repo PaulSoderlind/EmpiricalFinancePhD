@@ -1,4 +1,10 @@
 #------------------------------------------------------------------------------
+"""
+    excise(x)
+
+Cuts out rows that have a NaN
+
+"""
 function excise(x)
 #notice: if !any(vv), then this does NOT create a copy, so changing the output will
 #will change the input

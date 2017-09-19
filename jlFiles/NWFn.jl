@@ -1,10 +1,26 @@
-function NWFn(g,m)
- #NWFn    Calculates covariance matrix of sqrt(T)*sample average.
+#------------------------------------------------------------------------------
+"""
+    NWFn(g0,m=0)
 
-  T = size(g,1)                     #g is Txq
+Calculates covariance matrix of sqrt(T)*sample average.
+
+# Usage
+S = NWFn(g0,m)
+
+# Input
+- `g0::Array`: Txq array of q moment conditions
+- `m:int`: scalar, number of lags to use
+
+# Output
+- `S::Array`: qxq covariance matrix
+
+"""
+function NWFn(g0,m=0)
+
+  T = size(g0,1)                    #g0 is Txq
   m = min(m,T-1)                    #number of lags
 
-  g = g .- mean(g,1)                #Normalizing to Eg=0
+  g = g0 .- mean(g0,1)              #Normalizing to Eg=0
 
   S = g'g/T                         #(qxT)*(Txq)
   for s = 1:m
@@ -15,3 +31,4 @@ function NWFn(g,m)
   return S
 
 end
+#------------------------------------------------------------------------------

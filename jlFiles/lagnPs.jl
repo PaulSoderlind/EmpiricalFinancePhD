@@ -1,23 +1,21 @@
+#------------------------------------------------------------------------------
+"""
+    lagnPs(x,n=1)
+
+Creates a matrix or vector of lagged values.
+
+# Usage
+z = lagnPs(x,n)
+
+# Input
+- `x::Array`: Txk matrix
+- `n::Int`:   scalar, order of lag. For instance, 2 puts x[t-2,:] on row t
+
+# Output
+- `z::Array`:  Txk matrix of lags
+
+"""
 function lagnPs(x,n=1)
-#lagnPs   Creates a matrix or vector of lagged values.
-#
-#
-#
-#  Usage:    z    = lagnPs(x,n) or
-#                 = lagnPs(x)
-#
-#  Input:    x     Txk matrix
-#            n     scalar, order of lag. For instance, 2 puts x(t-2)
-#                  on row t; -3 puts x(t+3) on row t.
-#
-#  Output:   z     Txk matrix of lags
-#
-#
-#
-#
-#
-#  Paul.Soderlind@unisg.ch, to Julia Nov 2015
-#--------------------------------------------------------------------------
 
   (T,k) = size(x,1,2)
 

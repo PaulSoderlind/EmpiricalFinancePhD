@@ -1,27 +1,31 @@
-function OlsDiagnosticsFn(y,x,u,m=1)
-#OlsDiagnosticsFn  Diagnostic tests of OLS residuals
-#
-#
-#
-#  Usage:    [AutoCorr,DW,BoxPierce,White,Regr] = OlsDiagnosticsFn(y,x,u,m)
-#
-#  Input:    y         Tx1, dependent variable
-#            x         Txk, regressors
-#            u         Tx1, residuals
-#            m         scalar, number of lags in autocorrelation and Box-Pierce test
-#
-#
-#  Output:   AutoCorr  mx2, sqrt(T)*autorrelation and p-value
-#            DW        1x2, DW statistic and NaN
-#            BoxPierce 1x3, Box-Pierce statistic, p-value, df
-#            White     1x3, White's test static, p-value, df
-#            Regr      1x3, chi2-stat, p-value and df for test of all slope coefficients
-#
-#
-#
-#
-#  Paul.Soderlind@unisg.ch
 #------------------------------------------------------------------------------
+"""
+OlsDiagnosticsFn(y,x,u,m=1)
+
+Diagnostic tests of OLS residuals
+
+# Usage
+(AutoCorr,DW,BoxPierce,White,Regr) = OlsDiagnosticsFn(y,x,u,m)
+
+# Input:
+- `y::Array`:   Tx1, dependent variable
+- `x::Array`:   Txk, regressors
+- `u::Array`:   Tx1, residuals
+- `m::Int`:     scalar, number of lags in autocorrelation and Box-Pierce test
+
+# Output
+- `AutoCorr::Array`:    mx2, sqrt(T)*autorrelation and p-value
+- `DW::Array`:          1x2, DW statistic and NaN
+- `BoxPierce::Array`:   1x3, Box-Pierce statistic, p-value, df
+- `White::Array`:       1x3, White's test static, p-value, df
+- `Regr::Array`:        1x3, chi2-stat, p-value and df for test of all slope coefficients
+
+# Requires
+- OlsFn
+- StatsBase, Distributions
+
+"""
+function OlsDiagnosticsFn(y,x,u,m=1)
 
   #ux = excise([y u x])
   #y  = ux[:,1]

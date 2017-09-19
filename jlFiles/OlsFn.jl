@@ -1,24 +1,26 @@
-function OlsFn(y,x)
-#OlsFn    LS of y on x; for one dependent variable or SURE with same regressors
-#
-#
-#
-#  Usage:    (b,res,yhat,Covb,R2a,T) = OlsFn(y,x)
-#
-#  Input:    y            Tx1 or Txn matrix of the dependent variables
-#            x            Txk matrix of regressors (including deterministic ones)
-#
-#  Output:   b            kxn matrix, regression coefficients
-#            res          Tx1 or Txn matrix, residuals y - yhat
-#            yhat         Tx1 or Txn matrix, fitted values x*b
-#            Covb         matrix, covariance matrix of vec(b) =[beq1;beq2;...]
-#            R2a          1xn vector, R2 values
-#            T            scalar, number of obs
-#
-#
-#
-#  Paul.Soderlind@unisg.ch
 #----------------------------------------------------------------------------
+"""
+    OlsFn(y,x)
+
+LS of y on x; for one dependent variable or SURE with same regressors
+
+# Usage
+(b,res,yhat,Covb,R2a,T) = OlsFn(y,x)
+
+# Input
+- `y::Array`:     Tx1 or Txn matrix of the dependent variables
+- `x::Array`:     Txk matrix of regressors (including deterministic ones)
+
+# Output
+- `b::Array`:     kxn matrix, regression coefficients
+- `res::Array`:   Tx1 or Txn matrix, residuals y - yhat
+- `yhat::Array`:  Tx1 or Txn matrix, fitted values x*b
+- `Covb::Array`:  matrix, covariance matrix of vec(b) =[beq1;beq2;...]
+- `R2a::Array`:   1xn vector, R2 values
+- `T::Int`:       scalar, number of obs
+
+"""
+function OlsFn(y,x)
 
   T = size(y,1)
   n = size(y,2)
