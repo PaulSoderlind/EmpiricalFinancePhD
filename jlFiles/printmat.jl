@@ -58,8 +58,8 @@ function printmat(x,width=10,prec=3,Numfmt=NaN,NoPrinting=false)
     if p > 1
       s = s * "x[:,:,$k]\n"
     end
-    for i = 1:m
-      for j = 1:n
+    for i = 1:m                #loop over lines
+      for j = 1:n                #loop over columns
         if fmt2a == "f"
           s = s * fmtNumPs(x[i,j,k],width,prec,"right")
         elseif fmt2a == "d"
@@ -68,7 +68,7 @@ function printmat(x,width=10,prec=3,Numfmt=NaN,NoPrinting=false)
           s = s * lpad(x[i,j,k],width)
         end
       end
-      s = s * "\n"            #newline at end of row
+      s = s * "\n"            #newline at end of line
     end
     str = str * s
   end
@@ -237,6 +237,35 @@ function println4Ps(width,prec,z...)
   end
 
   print("\n")
+
+end
+#------------------------------------------------------------------------------
+
+
+#------------------------------------------------------------------------------
+"""
+    printmatDate(dN,x,DateFmt="yyyy-mm-dd",width=10,prec=3)
+
+Print formatted dates (1st column) and data matrix (remaining colums).
+
+See Dates.format() for the DateFmt and printmat() for (width,prec)
+
+"""
+function printmatDate(dN,x,DateFmt="yyyy-mm-dd",width=10,prec=3)
+
+  dNStr = Dates.format.(dN,DateFmt)            #vector of strings
+  T     = length(dNStr)
+
+  xStr  = printmat(x,width,prec,NaN,true)      #one long string
+  xStrV = split(xStr,"\n")                     #vector of strings (one element per line)
+
+  Str = Array{String}(T)                       #concatenate line by line
+  for i = 1:T
+    Str[i] = join([dNStr[i],xStrV[i],"\n"])
+  end
+  Str = join(Str)                              #join into one long string
+
+  printmat(Str,width,prec)
 
 end
 #------------------------------------------------------------------------------
