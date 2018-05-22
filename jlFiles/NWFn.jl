@@ -19,7 +19,7 @@ function NWFn(g0,m=0)
   T = size(g0,1)                    #g0 is Txq
   m = min(m,T-1)                    #number of lags
 
-  g = g0 .- mean(g0,1)              #Normalizing to Eg=0
+  g = g0 .- Compat.mean(g0,dims=1)  #Normalizing to Eg=0, 0.7 syntax
 
   S = g'g/T                         #(qxT)*(Txq)
   for s = 1:m
