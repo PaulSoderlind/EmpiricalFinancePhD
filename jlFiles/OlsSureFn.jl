@@ -34,6 +34,6 @@ function OlsSureFn(y,x,m=0)
     Sxxi  = -x'x/T
     Sxx_1 = kron(Matrix(1.0I,n,n),inv(Sxxi))    #Matrix(1.0I,n,n) is identity matrix(n)
     V     = Sxx_1 * S0 * Sxx_1
-    R2a   = 1.0 .- Compat.var(u,dims=1)./Compat.var(y,dims=1)  #0.7 syntax
+    R2a   = 1.0 .- var(u,dims=1)./var(y,dims=1)  #0.7 syntax
     return b,u,yhat,V,R2a
 end
