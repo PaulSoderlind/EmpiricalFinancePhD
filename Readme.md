@@ -1,3 +1,6 @@
+WARNING 5 Sep 2018: the plots in the new (Julia 1.0.0) notebooks do not yet render on GitHub. This will be fixed soon.
+
+
 # Introduction
 
 Julia code for a Empirical Finance course at UNISG. 
