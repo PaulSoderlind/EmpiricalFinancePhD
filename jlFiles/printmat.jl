@@ -15,11 +15,15 @@ Prints all elements of matrix with a predefined formatting.
 # Output
 - str         (if NoPrinting) string, (otherwise nothing)
 
+# Examples. Try the printing the following arrays:
+- x = [11 12;21 22]
+- x = Any[1 "ab"; Date(2018,10,7) 3.14]
+
 # Uses
 - fmtNumPs
 
 # To do
-- skip input ,DateFmt="yyyy-mm-dd"?
+- use Dict() for the options, width etc?
 - sort out dispatch and keyword arguments
 
 
@@ -28,8 +32,8 @@ Paul.Soderlind@unisg.ch
 """
 function printmat(fh::IO,x,width=10,prec=3,NoPrinting=false,htmlQ=false)
 
-  if typeof(x) <: String || typeof(x) <: Union{Date,DateTime}    #strings,DateTime need special treatment
-    str = string(x,"\n")
+  if isa(x,Union{String,Date,DateTime,Missing})   #these types need special treatment
+    str = string(lpad(x,width),"\n")
     if NoPrinting
       return str
     else
@@ -48,11 +52,9 @@ function printmat(fh::IO,x,width=10,prec=3,NoPrinting=false,htmlQ=false)
   iob = IOBuffer()
   for i = 1:m                #loop over lines
     for j = 1:n                #loop over columns
-      if typeof(x[i,j]) <: AbstractFloat                    #Floats,NaN
+      if isa(x[i,j],AbstractFloat)        #Float
         write(iob,fmtNumPs(x[i,j],width,prec,"right",htmlQ))
-      elseif typeof(x[i,j]) <:Union{Integer,Missing}        #Signed,Unsigned,BigInt,Missing
-        write(iob,fmtNumPs(x[i,j],width,0,"right",htmlQ))
-      else
+      else                                #other types (Integer,Missing,String,Date,...)
         htmlQ ? write(iob,"<td>",lpad(x[i,j],width),"</td>") : write(iob,lpad(x[i,j],width))
       end
     end
@@ -79,6 +81,8 @@ printmat(x,width=10,prec=3,NoPrinting=false,htmlQ=false) = printmat(stdout::IO,
     fmtNumPs(z,width=10,prec=2,justify="right",htmlQ=false)
 
 Formats a scalar and creates a string of it.
+
+The Formatting.jl package provides more elegant solutions.
 
 """
 function fmtNumPs(z,width=10,prec=2,justify="right",htmlQ=false)
@@ -148,7 +152,7 @@ Subsitute for println, with predefined formatting.
 
 The formatting can be set globally by defining a dictionary in the calling scope.
 
-Paul.Soderlind@unisg.ch, Jan 2017
+Paul.Soderlind@unisg.ch
 
 """
 function printlnPs(fh::IO,z...)
@@ -167,19 +171,14 @@ function printlnPs(fh::IO,z...)
   end
 
   for x in z                              #loop over inputs in z...
-    if typeof(x) <: String
-      print(fh,x)
-    elseif typeof(x) <: Union{Date,DateTime}
-      print(fh,rpad(x,width))
-    else
-      iob = IOBuffer()                     #opening IOBuffer
+    if isa(x,Union{String,Date,DateTime,Missing})
+      print(fh,lpad(x,width))
+    else                                         #other types
+      iob = IOBuffer()
       for i = 1:length(x)
-        eltype_x = eltype(x[i])
-        if eltype_x <: Union{AbstractFloat,Missing}
+        if isa(x[i],AbstractFloat)               #Float
           write(iob,fmtNumPs(x[i],width,prec,"right"))
-        elseif eltype_x <: Union{Integer,Missing}
-          write(iob,fmtNumPs(x[i],width,0,"right"))
-        else
+        else                                     #Integer, etc
           write(iob,lpad(x[i],width))
         end
       end
