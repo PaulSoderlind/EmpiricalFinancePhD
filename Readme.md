@@ -1,3 +1,6 @@
+# Notice 
+If GitHub fails to render the notebook, then use [nbviewer](https://nbviewer.jupyter.org/). First, try to open the notebook in GitHub, copy the link, paste it in the address field of nbviewer.
+
 # Introduction
 
 Julia code for a Empirical Finance course at UNISG. 
