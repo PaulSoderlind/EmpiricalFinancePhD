@@ -2,7 +2,7 @@
 """
     printmat([fh::IO],x,width=10,prec=3,NoPrinting=false,htmlQ=false)
 
-Prints all elements of matrix with a predefined formatting.
+Print all elements of matrix with predefined formatting.
 
 # Input
 - `fh::IO`:           (optional) file handle. If not supplied, prints to screen
@@ -32,7 +32,7 @@ Paul.Soderlind@unisg.ch
 """
 function printmat(fh::IO,x,width=10,prec=3,NoPrinting=false,htmlQ=false)
 
-  if isa(x,Union{String,Date,DateTime,Missing})   #these types need special treatment
+  if isa(x,Union{String,Date,DateTime,Missing})  #these types need special treatment
     str = string(lpad(x,width),"\n")
     if NoPrinting
       return str
@@ -40,6 +40,8 @@ function printmat(fh::IO,x,width=10,prec=3,NoPrinting=false,htmlQ=false)
       print(fh,str,"\n")
       return nothing
     end
+  elseif isa(x,Nothing)
+    return nothing
   end
 
   if ndims(x) > 2
@@ -54,6 +56,8 @@ function printmat(fh::IO,x,width=10,prec=3,NoPrinting=false,htmlQ=false)
     for j = 1:n                #loop over columns
       if isa(x[i,j],AbstractFloat)        #Float
         write(iob,fmtNumPs(x[i,j],width,prec,"right",htmlQ))
+      elseif isa(x[i,j],Nothing)           #Nothing
+        htmlQ ? write(iob,"<td>",lpad("",width),"</td>") : write(iob,lpad("",width))
       else                                #other types (Integer,Missing,String,Date,...)
         htmlQ ? write(iob,"<td>",lpad(x[i,j],width),"</td>") : write(iob,lpad(x[i,j],width))
       end
@@ -82,7 +86,10 @@ printmat(x,width=10,prec=3,NoPrinting=false,htmlQ=false) = printmat(stdout::IO,
 
 Formats a scalar and creates a string of it.
 
-The Formatting.jl package provides more elegant solutions.
+The Formatting.jl package provides more elegant solutions:
+fmt  = FormatSpec(string(">",width,".",prec,"f"))   #right justified, else "<"
+fmt = FormatSpec(string(">",wid,"d"))               #for Int
+str  = Formatting.fmt(fmt1,z))
 
 """
 function fmtNumPs(z,width=10,prec=2,justify="right",htmlQ=false)
@@ -173,11 +180,15 @@ function printlnPs(fh::IO,z...)
   for x in z                              #loop over inputs in z...
     if isa(x,Union{String,Date,DateTime,Missing})
       print(fh,lpad(x,width))
+    elseif isa(x,Nothing)
+      print(fh,"")
     else                                         #other types
       iob = IOBuffer()
       for i = 1:length(x)
         if isa(x[i],AbstractFloat)               #Float
           write(iob,fmtNumPs(x[i],width,prec,"right"))
+        elseif isa(x[i],Nothing)                 #Nothing
+          write(iob,lpad("",width))
         else                                     #Integer, etc
           write(iob,lpad(x[i],width))
         end
