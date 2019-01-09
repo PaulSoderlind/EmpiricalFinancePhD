@@ -3,6 +3,8 @@ If GitHub fails to render the notebook, then use [nbviewer](https://nbviewer.jup
 
 # Introduction
 
+January 2019: the plan for this repository is to move the easier material to my FinancialEconometrics repository. The more advanced material will remain here.
+
 Julia code for a Empirical Finance course at UNISG. 
 
 The current version is tested on Julia 1.0, but should work also on 0.7.
