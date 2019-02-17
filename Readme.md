@@ -5,7 +5,7 @@ If GitHub fails to render the notebook, then use [nbviewer](https://nbviewer.jup
 
 Julia code for a Empirical Finance course at UNISG. 
 
-See also my FinancialEconometrics repository for Julia notebooks on OLS, MLE, GARCH, Kernel regressions, Monte Carlos and Bootstraps.
+See also my FinancialEconometrics repository for Julia notebooks on OLS, MLE, GARCH, Kernel regressions, Monte Carlos, Bootstraps and panel regressions.
 
 The current version is tested on Julia 1.0, but should work also on 0.7.
 
