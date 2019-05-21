@@ -7,7 +7,7 @@ Julia code for a Empirical Finance course at UNISG.
 
 See also my FinancialEconometrics repository for Julia notebooks on OLS, MLE, GARCH, Kernel regressions, Monte Carlos, Bootstraps and panel regressions.
 
-The current version is tested on Julia 1.0, but should work also on 0.7.
+The current version is tested on Julia 1.1.
 
 The .ipynb files are Julia notebooks. They use data in the Data folder and Julia functions in the jlFiles folder. The notebooks are meant to be used together with my lecture notes (the pdf file).
 
