@@ -20,4 +20,4 @@ See also my FinancialEconometrics repository for Julia notebooks on OLS, MLE, GA
 
 3. The folder Data contains some data sets used in the notebooks, while the folder jlFiles contains .jl files with some functions used in the notebooks.
 
-4. The current version is tested on Julia 1.1.
+4. The current version is tested on Julia 1.1 and 1.2.
