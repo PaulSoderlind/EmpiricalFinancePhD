@@ -19,4 +19,4 @@ and my *FinancialTheoryMSc* repository for Julia notebooks on Predictability ("E
 
 2. The folder Data contains some data sets used in the notebooks, while the folder jlFiles contains .jl files with some functions used in the notebooks.
 
-3. The current version is tested on Julia 1.4 and 1.5.
+3. The current version is tested on Julia 1.5 and 1.6.
