@@ -1,10 +1,7 @@
 # Introduction
 
-This repository contains Julia code for a first year PhD course in Empirical Asset Pricing at UNISG. 
-
-See also my *FinancialEconometrics* repository for Julia notebooks on OLS, MLE, GARCH, Kernel regressions, Monte Carlos, Bootstraps and panel regressions,
-and my *FinancialTheoryMSc* repository for Julia notebooks on Predictability ("Efficient Markets").
-
+This repository contains some Julia code for a first year PhD course in Empirical Asset Pricing at UNISG. However, most of the notebooks have been migrated to my *FinancialEconometrics* repository (OLS, MLE, GARCH, Kernel regressions, Monte Carlos, Bootstraps, panel regressions, and GMM)
+and my *FinancialTheoryMSc* repository (Predictability/"Efficient Markets"). 
 
 # Instructions
 
