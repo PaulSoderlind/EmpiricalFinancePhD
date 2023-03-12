@@ -1,11 +1,10 @@
 # Introduction
 
-This repository contains some Julia code for a first year PhD course in Empirical Asset Pricing at UNISG. However, most of the notebooks have been migrated to my *FinancialEconometrics* repository (OLS, MLE, GARCH, Kernel regressions, Monte Carlos, Bootstraps, panel regressions, and GMM)
-and my *FinancialTheoryMSc* repository (Predictability/"Efficient Markets"). 
+This repository contains some Julia code for a first year PhD course in Empirical Asset Pricing at UNISG. However, most of the notebooks have been migrated to my *FinancialEconometrics* repository. The few notes that are left here are those that has not yet been migrated.
 
 # Instructions
 
-1.  Most files are jupyter notebooks. Click one of them to see it online. If GitHub fails to render the notebook, then use [nbviewer](https://nbviewer.jupyter.org/). Instructions: try to open the notebook at GitHub, copy the link and paste it in the address field of nbviewer.
+1.  Most files are jupyter notebooks. Click one of them to see it online. If GitHub fails to render the notebook or messes up the LaTeX in the Markdown cells, then use [nbviewer](https://nbviewer.jupyter.org/). Instructions: try to open the notebook at GitHub, copy the link and paste it in the address field of nbviewer.
 
 2.  To download this repository, use the Download (as zip) in the Github menu. Otherwise, clone it.
 
@@ -16,4 +15,4 @@ and my *FinancialTheoryMSc* repository (Predictability/"Efficient Markets").
 
 2. The folder Data contains some data sets used in the notebooks, while the folder jlFiles contains .jl files with some functions used in the notebooks.
 
-3. The current version is tested on Julia 1.5 and 1.6.
+3. The current version is tested on Julia 1.8.
