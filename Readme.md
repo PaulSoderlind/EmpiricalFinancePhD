@@ -15,4 +15,4 @@ This repository contains some Julia code for a first year PhD course in Empirica
 
 2. The folder Data contains some data sets used in the notebooks, while the folder jlFiles contains .jl files with some functions used in the notebooks.
 
-3. The current version is tested on Julia 1.8.
+3. The current version is tested on Julia 1.10.
