@@ -1,6 +1,6 @@
 # Introduction
 
-This repository contains some Julia code for a first year PhD course in Empirical Asset Pricing at UNISG. However, most of the notebooks have been migrated to my *FinancialEconometrics* repository. The few notes that are left here are those that has not yet been migrated.
+This repository contains some Julia code for a first year PhD course in Empirical Asset Pricing at UNISG. However, most of the notebooks have been migrated to my *FinancialEconometrics* repository. Some notebooks are still better suited for a PhD class, so they are left in this repository.
 
 # Instructions
 
