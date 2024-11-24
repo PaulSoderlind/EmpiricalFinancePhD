@@ -13,6 +13,6 @@ This repository contains some Julia code for a first year PhD course in Empirica
 
 1. The pdf file contains the lecture notes.
 
-2. The folder Data contains some data sets used in the notebooks, while the folder jlFiles contains .jl files with some functions used in the notebooks.
+2. The folder Data contains some data sets used in the notebooks, while the folder src contains .jl files with some functions used in the notebooks.
 
-3. The current version is tested on Julia 1.10.
+3. The current version is tested on Julia 1.11.
